@@ -1,0 +1,7 @@
+
+pandas
+pytest
+sqlalchemy
+cx_Oracle
+mysql-connector-python
+openpyxl
