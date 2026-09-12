@@ -29,15 +29,13 @@ OUTPUT_FOLDER = os.path.join(
     "ComparisonResults"
 )
 
-os.makedirs(
-    OUTPUT_FOLDER,
-    exist_ok=True
-)
+os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 
 # ------------------------------------------------------------
 # Set SerialNo to a specific number to run one mapping.
 # Example:
-# SERIAL_TO_RUN = 53
+# SERIAL_TO_RUN = [1, 2]
+# OR SERIAL_TO_RUN = [1]
 # Run all:
 # SERIAL_TO_RUN = None
 # ------------------------------------------------------------
@@ -91,7 +89,6 @@ def fetch_dataframe(
 
 
 # ORACLE VS MYSQL COMPARISON
-
 def compare_source_target(
     source_df: pd.DataFrame,
     target_df: pd.DataFrame,
@@ -308,7 +305,6 @@ def test_oracle_to_mysql(
     oracle_engine,
     mysql_engine
 ):
-
     # Main Oracle -> MySQL ETL validation test.
     mapping_df = pd.read_excel(EXCEL_PATH)
 
@@ -383,10 +379,8 @@ def test_oracle_to_mysql(
         )
 
         try:
-
             # ------------------------------------------------
             # Fetch Oracle source
-
             print(  "   Reading Oracle source..." )
             source_df = fetch_dataframe(
                 source_query,
@@ -398,7 +392,6 @@ def test_oracle_to_mysql(
             # ------------------------------------------------
 
             print( "   Reading MySQL target..." )
-
             target_df = fetch_dataframe(
                 target_query,
                 mysql_engine
@@ -515,7 +508,6 @@ def test_oracle_to_mysql(
 
     # ========================================================
     # PYTEST ASSERTION
-
     failed_tables = [
         result["Table"]
         for result in results
