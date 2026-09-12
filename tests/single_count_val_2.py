@@ -1,4 +1,5 @@
 
+# Verify count match and verify Join key match
 import os
 from datetime import datetime
 
